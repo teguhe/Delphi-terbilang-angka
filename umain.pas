@@ -144,7 +144,7 @@ begin
   myString := dir+'\audio\silent_quarter_second.wav';
   PlaySoundFile(myString);
 
-  mmoArrayList.Clear;
+  //mmoArrayList.Clear;
   for I := 0 to ArrayLength-1 do
   begin
     myString := dir+'\audio\'+Splitted[I]+'.wav';
