@@ -3,7 +3,7 @@ object fMain: TfMain
   Top = 0
   Caption = 'Terbilang angka dan baca angkanya'
   ClientHeight = 539
-  ClientWidth = 453
+  ClientWidth = 373
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -36,8 +36,8 @@ object fMain: TfMain
     TabOrder = 0
   end
   object btnTerbilang: TButton
-    Left = 367
-    Top = 67
+    Left = 247
+    Top = 36
     Width = 75
     Height = 25
     Caption = 'Terbilang'
@@ -46,14 +46,15 @@ object fMain: TfMain
     OnClick = btnTerbilangClick
   end
   object mmoTerbilang: TMemo
-    Left = 8
-    Top = 113
-    Width = 433
-    Height = 89
+    Left = 143
+    Top = 80
+    Width = 154
+    Height = 145
     Lines.Strings = (
       'mmoTerbilang')
     ReadOnly = True
     TabOrder = 2
+    Visible = False
   end
   object btnSpeak: TButton
     Left = 8
@@ -75,9 +76,9 @@ object fMain: TfMain
   end
   object mmoArrayList: TMemo
     Left = 8
-    Top = 207
-    Width = 433
-    Height = 298
+    Top = 98
+    Width = 353
+    Height = 407
     Lines.Strings = (
       'mmoTerbilang')
     ReadOnly = True

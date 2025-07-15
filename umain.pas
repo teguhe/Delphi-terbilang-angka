@@ -121,7 +121,7 @@ begin
     edAngka.Text:=IntToStr(int);
   end;
 
-  btnTerbilangClick(Sender);
+  //btnTerbilangClick(Sender);
 
 end;
 
@@ -133,6 +133,22 @@ begin
   begin
     MessageDlg('Silahkan masukkan angka yang valid, atau klik generate random number!', TMsgDlgType.mtWarning, [TMsgDlgBtn.mbOK], 0);
     Exit;
+  end;
+
+  mmoTerbilang.Clear;
+  mmoTerbilang.Text:=terbilang(StrToFloatDef(edAngka.Text,0));
+
+  MyString := mmoTerbilang.Text;
+  Splitted := MyString.Split([' ']);
+
+  ArrayLength := Length(Splitted);
+
+  lbJumlahKata.Caption:='Jumlah kata : '+(IntToStr(ArrayLength));
+
+  mmoArrayList.Clear;
+  for I := 0 to ArrayLength-1 do
+  begin
+    mmoArrayList.Lines.Add(Splitted[I]);
   end;
 
   dir := GetCurrentDir;

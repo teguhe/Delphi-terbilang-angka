@@ -29,6 +29,11 @@ type
     { Private declarations }
   public
     { Public declarations }
+
+      MyStringX: String;
+      Splitted: TArray<String>;
+      ArrayLength : Integer;
+      dir, myString : string;
   end;
 
 var
@@ -116,26 +121,19 @@ begin
     edAngka.Text:=IntToStr(int);
   end;
 
-  btnTerbilangClick(Sender);
+  //btnTerbilangClick(Sender);
 
 end;
 
 procedure TfMain.btnSpeakClick(Sender: TObject);
-var
-  MyStringX: String;
-  Splitted: TArray<String>;
-  ArrayLength, I : Integer;
-  dir, myString : string;
+var I : Integer;
 begin
 
-//  btnTerbilangClick(Sender);
-
-//  MyStringX := mmoTerbilang.Text;
-//  Splitted  := MyStringX.Split([' ']);
-//
-//  ArrayLength := Length(Splitted);
-//
-//  lbJumlahKata.Caption:='Jumlah kata : '+(IntToStr(ArrayLength));
+  if edAngka.Text='' then
+  begin
+    MessageDlg('Silahkan masukkan angka yang valid, atau klik generate random number!', TMsgDlgType.mtWarning, [TMsgDlgBtn.mbOK], 0);
+    Exit;
+  end;
 
   dir := GetCurrentDir;
 
@@ -152,10 +150,7 @@ begin
 end;
 
 procedure TfMain.btnTerbilangClick(Sender: TObject);
-var
-  MyString: String;
-  Splitted: TArray<String>;
-  ArrayLength, I : Integer;
+var I : Integer;
 begin
 
   mmoTerbilang.Clear;
