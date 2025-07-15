@@ -22,7 +22,7 @@ object fMain: TfMain
   end
   object lbJumlahKata: TLabel
     Left = 120
-    Top = 510
+    Top = 478
     Width = 78
     Height = 15
     Caption = 'Jumlah kata : 0'
@@ -56,25 +56,26 @@ object fMain: TfMain
   end
   object btnSpeak: TButton
     Left = 120
-    Top = 176
-    Width = 75
+    Top = 500
+    Width = 137
     Height = 25
-    Caption = 'Baca Angka'
+    Caption = 'Baca Angka !'
     TabOrder = 3
     OnClick = btnSpeakClick
   end
   object btnJumlahKata: TButton
-    Left = 201
-    Top = 176
+    Left = 369
+    Top = 20
     Width = 144
     Height = 25
     Caption = 'Hitung Jumlah Kata'
     TabOrder = 4
+    Visible = False
     OnClick = btnJumlahKataClick
   end
   object mmoArrayList: TMemo
     Left = 120
-    Top = 207
+    Top = 175
     Width = 433
     Height = 298
     Lines.Strings = (

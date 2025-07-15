@@ -126,14 +126,14 @@ end;
 
 procedure TfMain.btnSpeakClick(Sender: TObject);
 var
-  MyString: String;
+  MyStringX: String;
   Splitted: TArray<String>;
   ArrayLength, I : Integer;
   dir, myString : string;
 begin
 
-  MyString := mmoTerbilang.Text;
-  Splitted := MyString.Split([' ']);
+  MyStringX := mmoTerbilang.Text;
+  Splitted  := MyStringX.Split([' ']);
 
   ArrayLength := Length(Splitted);
 
@@ -141,10 +141,14 @@ begin
 
   dir := GetCurrentDir;
 
+  myString := dir+'\audio\silent_quarter_second.wav';
+  PlaySoundFile(myString);
+
   mmoArrayList.Clear;
   for I := 0 to ArrayLength-1 do
   begin
-    mmoArrayList.Lines.Add(Splitted[I]);
+    myString := dir+'\audio\'+Splitted[I]+'.wav';
+    PlaySoundFile(myString);
   end;
 
 end;

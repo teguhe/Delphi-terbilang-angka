@@ -2,7 +2,7 @@ object fMain: TfMain
   Left = 0
   Top = 0
   Caption = 'fMain'
-  ClientHeight = 225
+  ClientHeight = 533
   ClientWidth = 569
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,6 +19,13 @@ object fMain: TfMain
     Width = 89
     Height = 15
     Caption = 'Masukkan angka'
+  end
+  object lbJumlahKata: TLabel
+    Left = 120
+    Top = 510
+    Width = 78
+    Height = 15
+    Caption = 'Jumlah kata : 0'
   end
   object edAngka: TEdit
     Left = 120
@@ -54,6 +61,7 @@ object fMain: TfMain
     Height = 25
     Caption = 'Baca Angka'
     TabOrder = 3
+    OnClick = btnSpeakClick
   end
   object btnJumlahKata: TButton
     Left = 201
@@ -62,5 +70,15 @@ object fMain: TfMain
     Height = 25
     Caption = 'Hitung Jumlah Kata'
     TabOrder = 4
+    OnClick = btnJumlahKataClick
+  end
+  object mmoArrayList: TMemo
+    Left = 120
+    Top = 207
+    Width = 433
+    Height = 298
+    Lines.Strings = (
+      'mmoTerbilang')
+    TabOrder = 5
   end
 end

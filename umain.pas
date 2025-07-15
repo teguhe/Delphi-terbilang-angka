@@ -157,6 +157,7 @@ procedure TfMain.btnTerbilangClick(Sender: TObject);
 begin
 
   mmoTerbilang.Text:=terbilang(StrToFloatDef(edAngka.Text,0));
+  btnJumlahKataClick(Sender);
 
 end;
 
