@@ -1,0 +1,172 @@
+unit umain;
+
+interface
+
+uses
+
+  //SysUtils.TStringHelper.Split,
+  MMSystem,
+
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TfMain = class(TForm)
+    lb1: TLabel;
+    edAngka: TEdit;
+    btnTerbilang: TButton;
+    mmoTerbilang: TMemo;
+    btnSpeak: TButton;
+    btnJumlahKata: TButton;
+    mmoArrayList: TMemo;
+    lbJumlahKata: TLabel;
+    procedure FormCreate(Sender: TObject);
+    procedure btnTerbilangClick(Sender: TObject);
+    procedure btnJumlahKataClick(Sender: TObject);
+    procedure btnSpeakClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fMain: TfMain;
+
+implementation
+
+{$R *.dfm}
+
+procedure PlaySoundFile(FileName: string);
+begin
+
+  if FileExists(FileName)
+  then PlaySound(pchar(FileName), 0, SND_SYNC or SND_FILENAME);
+//  then PlaySound(pchar(FileName), 0, SND_ASYNC or SND_FILENAME);
+
+  { Flags are:
+    SND_SYNC  =0 = Start playing, and wait for the sound to finish
+    SND_ASYNC =1 = Start playing, and don't wait to return
+    SND_LOOP  =8 = Keep looping the sound until another sound is played  }
+
+end;
+
+function terbilang(dNumber: Extended): string;
+const
+ aNum: array[1..9] of String = ('satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan');
+ aUnit: array[1..5] of String = ('trilyun', 'milyar', 'juta', 'ribu', '');
+var
+ iCount, iDigit1, iDigit2, iDigit3: Integer;
+ sNum2Str, s3Digit, sWord: string;
+begin
+
+  Result := '';
+   if (dNumber=0) then Exit;
+   sNum2Str:=Copy(Format('%18.2f', [dNumber]), 1, 15);
+   for ICount:=1 to 5 do
+   begin
+   s3Digit:=Copy(sNum2Str, iCount*3-2, 3);
+   if (StrToIntDef(s3Digit, 0)<>0) then
+   begin
+   sWord:='';
+   iDigit1:=StrToIntDef(Copy(s3Digit, 1, 1), 0);
+   iDigit2:=StrToIntDef(Copy(s3Digit, 2, 1), 0);
+   iDigit3:=StrToIntDef(Copy(s3Digit, 3, 1), 0);
+   case iDigit1 of
+   2..9: sWord:=sWord+aNum[iDigit1]+' ratus ';
+   1: sWord:=sWord+'seratus ';
+   end; { case }
+
+  case iDigit2 of
+   2..9: sWord:=sWord+aNum[iDigit2]+' puluh ';
+   1: case iDigit3 of
+   2..9: sWord:=sWord+aNum[iDigit3]+' belas ';
+   1: sWord:=sWord+'sebelas ';
+   0: sWord:=sWord+'sepuluh ';
+   end; { case }
+   end; { case }
+
+  if (iDigit2<>1) then
+   case iDigit3 of
+   2..9: sWord:=sWord + aNum[iDigit3] + ' ';
+   1: if (iCount=4) and ((iDigit1+iDigit2)=0) then
+   sWord:=sWord+'se'
+   else
+   sWord:=sWord+'satu ';
+   end;
+   Result:=Result+sWord+aUnit[iCount]+' ';
+   end;
+  end;
+  while Result[Length(Result)]=' ' do
+  SetLength(Result, Length(Result)-1);
+
+end;
+
+procedure TfMain.btnJumlahKataClick(Sender: TObject);
+var
+  MyString: String;
+  Splitted: TArray<String>;
+  ArrayLength, I : Integer;
+begin
+
+  MyString := mmoTerbilang.Text;
+  Splitted := MyString.Split([' ']);
+
+  ArrayLength := Length(Splitted);
+
+  lbJumlahKata.Caption:='Jumlah kata : '+(IntToStr(ArrayLength));
+
+  mmoArrayList.Clear;
+  for I := 0 to ArrayLength-1 do
+  begin
+    mmoArrayList.Lines.Add(Splitted[I]);
+  end;
+
+end;
+
+procedure TfMain.btnSpeakClick(Sender: TObject);
+var
+  MyStringX: String;
+  Splitted: TArray<String>;
+  ArrayLength, I : Integer;
+  dir, myString : string;
+begin
+
+  MyStringX := mmoTerbilang.Text;
+  Splitted  := MyStringX.Split([' ']);
+
+  ArrayLength := Length(Splitted);
+
+  lbJumlahKata.Caption:='Jumlah kata : '+(IntToStr(ArrayLength));
+
+  dir := GetCurrentDir;
+
+  myString := dir+'\audio\'+Splitted[I]+'.wav';
+  PlaySoundFile(myString);
+
+  mmoArrayList.Clear;
+  for I := 0 to ArrayLength-1 do
+  begin
+    myString := dir+'\audio\'+Splitted[I]+'.wav';
+    PlaySoundFile(myString);
+  end;
+
+end;
+
+procedure TfMain.btnTerbilangClick(Sender: TObject);
+begin
+
+  mmoTerbilang.Text:=terbilang(StrToFloatDef(edAngka.Text,0));
+
+end;
+
+procedure TfMain.FormCreate(Sender: TObject);
+begin
+
+  Position:=poScreenCenter;
+  mmoTerbilang.Clear;
+  mmoArrayList.Clear;
+
+end;
+
+end.
