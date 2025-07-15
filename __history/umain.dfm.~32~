@@ -82,4 +82,13 @@ object fMain: TfMain
       'mmoTerbilang')
     TabOrder = 5
   end
+  object btnRandom: TButton
+    Left = 215
+    Top = 20
+    Width = 138
+    Height = 25
+    Caption = 'get Random Number'
+    TabOrder = 6
+    OnClick = btnRandomClick
+  end
 end

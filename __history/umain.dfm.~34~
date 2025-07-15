@@ -3,7 +3,7 @@ object fMain: TfMain
   Top = 0
   Caption = 'fMain'
   ClientHeight = 533
-  ClientWidth = 569
+  ClientWidth = 920
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,8 +21,8 @@ object fMain: TfMain
     Caption = 'Masukkan angka'
   end
   object lbJumlahKata: TLabel
-    Left = 120
-    Top = 510
+    Left = 360
+    Top = 471
     Width = 78
     Height = 15
     Caption = 'Jumlah kata : 0'
@@ -37,8 +37,8 @@ object fMain: TfMain
     Text = '12345'
   end
   object btnTerbilang: TButton
-    Left = 120
-    Top = 50
+    Left = 519
+    Top = 20
     Width = 75
     Height = 25
     Caption = 'Terbilang'
@@ -46,8 +46,8 @@ object fMain: TfMain
     OnClick = btnTerbilangClick
   end
   object mmoTerbilang: TMemo
-    Left = 120
-    Top = 81
+    Left = 360
+    Top = 73
     Width = 433
     Height = 89
     Lines.Strings = (
@@ -56,29 +56,39 @@ object fMain: TfMain
   end
   object btnSpeak: TButton
     Left = 120
-    Top = 176
-    Width = 75
+    Top = 51
+    Width = 137
     Height = 25
-    Caption = 'Baca Angka'
+    Caption = 'Baca Angka !'
     TabOrder = 3
     OnClick = btnSpeakClick
   end
   object btnJumlahKata: TButton
-    Left = 201
-    Top = 176
+    Left = 369
+    Top = 20
     Width = 144
     Height = 25
     Caption = 'Hitung Jumlah Kata'
     TabOrder = 4
+    Visible = False
     OnClick = btnJumlahKataClick
   end
   object mmoArrayList: TMemo
-    Left = 120
-    Top = 207
+    Left = 360
+    Top = 167
     Width = 433
     Height = 298
     Lines.Strings = (
       'mmoTerbilang')
     TabOrder = 5
+  end
+  object btnRandom: TButton
+    Left = 215
+    Top = 20
+    Width = 138
+    Height = 25
+    Caption = 'get Random Number'
+    TabOrder = 6
+    OnClick = btnRandomClick
   end
 end

@@ -20,10 +20,11 @@ type
     btnJumlahKata: TButton;
     mmoArrayList: TMemo;
     lbJumlahKata: TLabel;
+    btnRandom: TButton;
     procedure FormCreate(Sender: TObject);
     procedure btnTerbilangClick(Sender: TObject);
-    procedure btnJumlahKataClick(Sender: TObject);
     procedure btnSpeakClick(Sender: TObject);
+    procedure btnRandomClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -102,12 +103,58 @@ begin
 
 end;
 
-procedure TfMain.btnJumlahKataClick(Sender: TObject);
+procedure TfMain.btnRandomClick(Sender: TObject);
+var
+  float : single;
+  int   : Integer;
+  i     : Integer;
+begin
+
+  for i := 1 to 5 do
+  begin
+    int := 1 + Random(100000);    // The 100 value gives a range 0..99
+    edAngka.Text:=IntToStr(int);
+  end;
+
+  btnTerbilangClick(Sender);
+
+end;
+
+procedure TfMain.btnSpeakClick(Sender: TObject);
+begin
+
+//  btnTerbilangClick(Sender);
+
+//  MyStringX := mmoTerbilang.Text;
+//  Splitted  := MyStringX.Split([' ']);
+//
+//  ArrayLength := Length(Splitted);
+//
+//  lbJumlahKata.Caption:='Jumlah kata : '+(IntToStr(ArrayLength));
+
+  dir := GetCurrentDir;
+
+  myString := dir+'\audio\silent_quarter_second.wav';
+  PlaySoundFile(myString);
+
+  //mmoArrayList.Clear;
+  for I := 0 to ArrayLength-1 do
+  begin
+    myString := dir+'\audio\'+Splitted[I]+'.wav';
+    PlaySoundFile(myString);
+  end;
+
+end;
+
+procedure TfMain.btnTerbilangClick(Sender: TObject);
 var
   MyString: String;
   Splitted: TArray<String>;
   ArrayLength, I : Integer;
 begin
+
+  mmoTerbilang.Clear;
+  mmoTerbilang.Text:=terbilang(StrToFloatDef(edAngka.Text,0));
 
   MyString := mmoTerbilang.Text;
   Splitted := MyString.Split([' ']);
@@ -121,39 +168,6 @@ begin
   begin
     mmoArrayList.Lines.Add(Splitted[I]);
   end;
-
-end;
-
-procedure TfMain.btnSpeakClick(Sender: TObject);
-var
-  MyStringX: String;
-  Splitted: TArray<String>;
-  ArrayLength, I : Integer;
-  dir, myString : string;
-begin
-
-  MyStringX := mmoTerbilang.Text;
-  Splitted  := MyStringX.Split([' ']);
-
-  ArrayLength := Length(Splitted);
-
-  lbJumlahKata.Caption:='Jumlah kata : '+(IntToStr(ArrayLength));
-
-  dir := GetCurrentDir;
-
-  mmoArrayList.Clear;
-  for I := 0 to ArrayLength-1 do
-  begin
-    myString := dir+'\audio\'+Splitted[I]+'.wav';
-    PlaySoundFile(myString);
-  end;
-
-end;
-
-procedure TfMain.btnTerbilangClick(Sender: TObject);
-begin
-
-  mmoTerbilang.Text:=terbilang(StrToFloatDef(edAngka.Text,0));
 
 end;
 

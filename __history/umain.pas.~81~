@@ -23,12 +23,17 @@ type
     btnRandom: TButton;
     procedure FormCreate(Sender: TObject);
     procedure btnTerbilangClick(Sender: TObject);
-    procedure btnJumlahKataClick(Sender: TObject);
     procedure btnSpeakClick(Sender: TObject);
+    procedure btnRandomClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+
+      MyStringX: String;
+      Splitted: TArray<String>;
+      ArrayLength, I : Integer;
+      dir, myString : string;
   end;
 
 var
@@ -103,42 +108,34 @@ begin
 
 end;
 
-procedure TfMain.btnJumlahKataClick(Sender: TObject);
+procedure TfMain.btnRandomClick(Sender: TObject);
 var
-  MyString: String;
-  Splitted: TArray<String>;
-  ArrayLength, I : Integer;
+  float : single;
+  int   : Integer;
+  i     : Integer;
 begin
 
-  MyString := mmoTerbilang.Text;
-  Splitted := MyString.Split([' ']);
-
-  ArrayLength := Length(Splitted);
-
-  lbJumlahKata.Caption:='Jumlah kata : '+(IntToStr(ArrayLength));
-
-  mmoArrayList.Clear;
-  for I := 0 to ArrayLength-1 do
+  for i := 1 to 5 do
   begin
-    mmoArrayList.Lines.Add(Splitted[I]);
+    int := 1 + Random(100000);    // The 100 value gives a range 0..99
+    edAngka.Text:=IntToStr(int);
   end;
+
+  btnTerbilangClick(Sender);
 
 end;
 
 procedure TfMain.btnSpeakClick(Sender: TObject);
-var
-  MyStringX: String;
-  Splitted: TArray<String>;
-  ArrayLength, I : Integer;
-  dir, myString : string;
 begin
 
-  MyStringX := mmoTerbilang.Text;
-  Splitted  := MyStringX.Split([' ']);
+//  btnTerbilangClick(Sender);
 
-  ArrayLength := Length(Splitted);
-
-  lbJumlahKata.Caption:='Jumlah kata : '+(IntToStr(ArrayLength));
+//  MyStringX := mmoTerbilang.Text;
+//  Splitted  := MyStringX.Split([' ']);
+//
+//  ArrayLength := Length(Splitted);
+//
+//  lbJumlahKata.Caption:='Jumlah kata : '+(IntToStr(ArrayLength));
 
   dir := GetCurrentDir;
 
@@ -155,10 +152,27 @@ begin
 end;
 
 procedure TfMain.btnTerbilangClick(Sender: TObject);
+//var
+//  MyString: String;
+//  Splitted: TArray<String>;
+//  ArrayLength, I : Integer;
 begin
 
+  mmoTerbilang.Clear;
   mmoTerbilang.Text:=terbilang(StrToFloatDef(edAngka.Text,0));
-  btnJumlahKataClick(Sender);
+
+  MyString := mmoTerbilang.Text;
+  Splitted := MyString.Split([' ']);
+
+  ArrayLength := Length(Splitted);
+
+  lbJumlahKata.Caption:='Jumlah kata : '+(IntToStr(ArrayLength));
+
+  mmoArrayList.Clear;
+  for I := 0 to ArrayLength-1 do
+  begin
+    mmoArrayList.Lines.Add(Splitted[I]);
+  end;
 
 end;
 

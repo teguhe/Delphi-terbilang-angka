@@ -1,9 +1,9 @@
 object fMain: TfMain
   Left = 0
   Top = 0
-  Caption = 'fMain'
-  ClientHeight = 533
-  ClientWidth = 569
+  Caption = 'Terbilang angka dan baca angkanya'
+  ClientHeight = 539
+  ClientWidth = 453
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,49 +14,50 @@ object fMain: TfMain
   OnCreate = FormCreate
   TextHeight = 15
   object lb1: TLabel
-    Left = 16
-    Top = 24
+    Left = 8
+    Top = 15
     Width = 89
     Height = 15
     Caption = 'Masukkan angka'
   end
   object lbJumlahKata: TLabel
-    Left = 120
-    Top = 478
+    Left = 8
+    Top = 511
     Width = 78
     Height = 15
     Caption = 'Jumlah kata : 0'
   end
   object edAngka: TEdit
-    Left = 120
-    Top = 21
+    Left = 8
+    Top = 37
     Width = 89
     Height = 23
     NumbersOnly = True
     TabOrder = 0
-    Text = '12345'
   end
   object btnTerbilang: TButton
-    Left = 120
-    Top = 50
+    Left = 367
+    Top = 67
     Width = 75
     Height = 25
     Caption = 'Terbilang'
     TabOrder = 1
+    Visible = False
     OnClick = btnTerbilangClick
   end
   object mmoTerbilang: TMemo
-    Left = 120
-    Top = 81
+    Left = 8
+    Top = 113
     Width = 433
     Height = 89
     Lines.Strings = (
       'mmoTerbilang')
+    ReadOnly = True
     TabOrder = 2
   end
   object btnSpeak: TButton
-    Left = 120
-    Top = 500
+    Left = 8
+    Top = 67
     Width = 137
     Height = 25
     Caption = 'Baca Angka !'
@@ -64,27 +65,27 @@ object fMain: TfMain
     OnClick = btnSpeakClick
   end
   object btnJumlahKata: TButton
-    Left = 369
-    Top = 20
+    Left = 217
+    Top = 67
     Width = 144
     Height = 25
     Caption = 'Hitung Jumlah Kata'
     TabOrder = 4
     Visible = False
-    OnClick = btnJumlahKataClick
   end
   object mmoArrayList: TMemo
-    Left = 120
-    Top = 175
+    Left = 8
+    Top = 207
     Width = 433
     Height = 298
     Lines.Strings = (
       'mmoTerbilang')
+    ReadOnly = True
     TabOrder = 5
   end
   object btnRandom: TButton
-    Left = 215
-    Top = 20
+    Left = 103
+    Top = 36
     Width = 138
     Height = 25
     Caption = 'get Random Number'

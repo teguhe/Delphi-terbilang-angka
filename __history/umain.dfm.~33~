@@ -3,7 +3,7 @@ object fMain: TfMain
   Top = 0
   Caption = 'fMain'
   ClientHeight = 533
-  ClientWidth = 569
+  ClientWidth = 920
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,7 +22,7 @@ object fMain: TfMain
   end
   object lbJumlahKata: TLabel
     Left = 120
-    Top = 510
+    Top = 478
     Width = 78
     Height = 15
     Caption = 'Jumlah kata : 0'
@@ -37,8 +37,8 @@ object fMain: TfMain
     Text = '12345'
   end
   object btnTerbilang: TButton
-    Left = 120
-    Top = 50
+    Left = 519
+    Top = 20
     Width = 75
     Height = 25
     Caption = 'Terbilang'
@@ -55,11 +55,11 @@ object fMain: TfMain
     TabOrder = 2
   end
   object btnSpeak: TButton
-    Left = 16
-    Top = 320
-    Width = 75
+    Left = 120
+    Top = 500
+    Width = 137
     Height = 25
-    Caption = 'Baca Angka'
+    Caption = 'Baca Angka !'
     TabOrder = 3
     OnClick = btnSpeakClick
   end
@@ -75,11 +75,20 @@ object fMain: TfMain
   end
   object mmoArrayList: TMemo
     Left = 120
-    Top = 207
+    Top = 175
     Width = 433
     Height = 298
     Lines.Strings = (
       'mmoTerbilang')
     TabOrder = 5
+  end
+  object btnRandom: TButton
+    Left = 215
+    Top = 20
+    Width = 138
+    Height = 25
+    Caption = 'get Random Number'
+    TabOrder = 6
+    OnClick = btnRandomClick
   end
 end

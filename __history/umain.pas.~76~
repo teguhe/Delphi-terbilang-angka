@@ -23,7 +23,6 @@ type
     btnRandom: TButton;
     procedure FormCreate(Sender: TObject);
     procedure btnTerbilangClick(Sender: TObject);
-    procedure btnJumlahKataClick(Sender: TObject);
     procedure btnSpeakClick(Sender: TObject);
     procedure btnRandomClick(Sender: TObject);
   private
@@ -104,28 +103,6 @@ begin
 
 end;
 
-procedure TfMain.btnJumlahKataClick(Sender: TObject);
-var
-  MyString: String;
-  Splitted: TArray<String>;
-  ArrayLength, I : Integer;
-begin
-
-  MyString := mmoTerbilang.Text;
-  Splitted := MyString.Split([' ']);
-
-  ArrayLength := Length(Splitted);
-
-  lbJumlahKata.Caption:='Jumlah kata : '+(IntToStr(ArrayLength));
-
-  mmoArrayList.Clear;
-  for I := 0 to ArrayLength-1 do
-  begin
-    mmoArrayList.Lines.Add(Splitted[I]);
-  end;
-
-end;
-
 procedure TfMain.btnRandomClick(Sender: TObject);
 var
   float : single;
@@ -138,6 +115,9 @@ begin
     int := 1 + Random(100000);    // The 100 value gives a range 0..99
     edAngka.Text:=IntToStr(int);
   end;
+
+  btnTerbilangClick(Sender);
+
 end;
 
 procedure TfMain.btnSpeakClick(Sender: TObject);
@@ -147,6 +127,8 @@ var
   ArrayLength, I : Integer;
   dir, myString : string;
 begin
+
+//  btnTerbilangClick(Sender);
 
   MyStringX := mmoTerbilang.Text;
   Splitted  := MyStringX.Split([' ']);
@@ -170,10 +152,27 @@ begin
 end;
 
 procedure TfMain.btnTerbilangClick(Sender: TObject);
+var
+  MyString: String;
+  Splitted: TArray<String>;
+  ArrayLength, I : Integer;
 begin
 
+  mmoTerbilang.Clear;
   mmoTerbilang.Text:=terbilang(StrToFloatDef(edAngka.Text,0));
-  btnJumlahKataClick(Sender);
+
+  MyString := mmoTerbilang.Text;
+  Splitted := MyString.Split([' ']);
+
+  ArrayLength := Length(Splitted);
+
+  lbJumlahKata.Caption:='Jumlah kata : '+(IntToStr(ArrayLength));
+
+  mmoArrayList.Clear;
+  for I := 0 to ArrayLength-1 do
+  begin
+    mmoArrayList.Lines.Add(Splitted[I]);
+  end;
 
 end;
 
