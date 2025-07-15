@@ -20,10 +20,12 @@ type
     btnJumlahKata: TButton;
     mmoArrayList: TMemo;
     lbJumlahKata: TLabel;
+    btnRandom: TButton;
     procedure FormCreate(Sender: TObject);
     procedure btnTerbilangClick(Sender: TObject);
     procedure btnJumlahKataClick(Sender: TObject);
     procedure btnSpeakClick(Sender: TObject);
+    procedure btnRandomClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -120,6 +122,21 @@ begin
   for I := 0 to ArrayLength-1 do
   begin
     mmoArrayList.Lines.Add(Splitted[I]);
+  end;
+
+end;
+
+procedure TfMain.btnRandomClick(Sender: TObject);
+var
+  float : single;
+  int   : Integer;
+  i     : Integer;
+begin
+
+  for i := 1 to 5 do
+  begin
+    int := 1 + Random(100000);    // The 100 value gives a range 0..99
+    edAngka.Text:=IntToStr(int);
   end;
 
 end;
